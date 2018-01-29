@@ -15,14 +15,14 @@
 <form action="/login.jsp" method="post">
     <input type="submit" value="ВОЙТИ">
 </form>
+<form action="/reg" method="post">
+    <input type="submit" value="Регистрация">
+</form>
 <%} else {%>
 <form action="/logout" method="post">
     <input type="submit" value="ВЫЙТИ">
 </form>
 <%}%>
-<form action="/reg" method="post">
-    <input type="submit" value="Регистрация">
-</form>
 <form action="/inner/dashboard" method="post">
     <input type="submit" value="Посмотреть свои контракты и заявки" name="contract">
 </form>

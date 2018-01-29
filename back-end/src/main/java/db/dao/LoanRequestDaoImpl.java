@@ -9,12 +9,13 @@ import db.pojo.UserData;
 import db.pojo.UserPersonal;
 import org.springframework.stereotype.Component;
 
-import java.sql.ResultSet;
-import java.util.*;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class LoanRequestDaoImpl implements LoanRequestDao {
     private static ConnectionManager connectionManager = ConnectionManagerPostgres.getInstance();

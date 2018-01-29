@@ -5,10 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <beans:component-scan base-package="controllers"/>
     <beans:component-scan base-package="services"/>
-    <beans:component-scan base-package="db.dao"/>
-    <beans:component-scan base-package="db.connections"/>
     <beans:component-scan base-package="utils"/>
-    <mvc:annotation-driven/>
+    <beans:component-scan base-package="db.dao"/>
+    <beans:component-scan base-package="configs"/>
 
     <bean id="viewResolver"
     class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,4 +19,34 @@
             <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"/>
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
+
+
+    <bean id="serviceReg" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1198/reg"/>
+        <property name="serviceInterface" value="services.ServiceReg"/>
+    </bean>
+
+    <bean id="serviceForGetAllRequestAndContractsByIdUser" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1198/get"/>
+        <property name="serviceInterface" value="services.ServiceForGetAllRequestAndContractsByIdUser"/>
+    </bean>
+
+    <bean id="serviceForApprovedRequestAndCreateContract" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+    <property name="serviceUrl" value="rmi://localhost:1198/approve"/>
+    <property name="serviceInterface" value="services.ServiceForApprovedRequestAndCreateContract"/>
+</bean>
+
+    <bean id="serviceCreateRequest" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+    <property name="serviceUrl" value="rmi://localhost:1198/createRequest"/>
+    <property name="serviceInterface" value="services.ServiceCreateRequest"/>
+</bean>
+
+    <bean id="serviceAuth" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1198/auth"/>
+        <property name="serviceInterface" value="services.ServiceAuth"/>
+    </bean>
+
+
+
+
 </beans>

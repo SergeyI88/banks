@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 @Service
 public class ServiceAuthImpl implements ServiceAuth{
-
+    @Autowired
     UserDataDao userDataDao;
 
     public UserDataDao getUserDataDao() {

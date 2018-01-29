@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
+
 @Component
 public class ClientDaoImpl implements ClientDao {
     private static ConnectionManager connectionManager = ConnectionManagerPostgres.getInstance();

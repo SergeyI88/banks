@@ -1,6 +1,8 @@
 package controllers;
 
 import com.google.gson.Gson;
+//import configs.UserInside;
+import configs.UserInside;
 import db.pojo.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -24,9 +26,19 @@ public class ControllerIndex {
 
 
     @RequestMapping("/index")
-    public ModelAndView index(@AuthenticationPrincipal User user) {
-       SecurityContext securityContext =  SecurityContextHolder.getContext();
-        if (user != null) {
+    public ModelAndView index() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication auth = securityContext.getAuthentication();
+        User user = ((User) auth.getPrincipal());
+        UserData userInside = new UserData();
+
+        try {
+            userInside.setId(serviceAuth.getIdUserDataByLogin(user.getUsername()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(userInside);
+        if (userInside != null) {
                 String role = user.getAuthorities().toString();
             System.out.println(role);
             if (role.equals("[role_user]")) {

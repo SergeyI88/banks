@@ -23,9 +23,9 @@ public class ControllerManager {
 
     private static Logger logger = Logger.getLogger(DashBoardController.class);
     @Autowired
-    private  ServiceForGetAllRequestAndContractsByIdUser serviceForGetAllRequestAndContractsByIdUser;
+    private ServiceForGetAllRequestAndContractsByIdUser serviceForGetAllRequestAndContractsByIdUser;
     @Autowired
-    private  ServiceForApprovedRequestAndCreateContract serviceForApprovedRequestAndCreateContract;
+    private ServiceForApprovedRequestAndCreateContract serviceForApprovedRequestAndCreateContract;
 
 
     @ModelAttribute("requests")

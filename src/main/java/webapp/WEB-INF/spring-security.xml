@@ -5,16 +5,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
              xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
 
-             xsi:schemaLocation="
-
-    http://www.springframework.org/schema/security
+             xsi:schemaLocation="http://www.springframework.org/schema/security
 
     http://www.springframework.org/schema/security/spring-security-4.2.xsd
 
     http://www.springframework.org/schema/beans
 
-    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <global-method-security secured-annotations="enabled"/>
 
@@ -33,17 +32,16 @@
     </http>
 
     <beans:bean id="myCustomUserService" class="configs.CustomUserService"/>
+    <beans:bean id="myCustomAuthProvider" class="configs.CustomAuthProvider"/>
     <authentication-manager>
-        <authentication-provider user-service-ref="myCustomUserService">
-
-            <password-encoder ref="encoder"/>
+        <authentication-provider ref="myCustomAuthProvider">
+            <!--<password-encoder ref="encoder"/>-->
             <!--<jdbc-user-service data-source-ref="dataSourse"-->
                                <!--users-by-username-query="SELECT login AS username, password, enabled FROM user_data WHERE login = ?"-->
                                <!--authorities-by-username-query="SELECT login AS username, role FROM user_data WHERE login = ?"></jdbc-user-service>-->
         </authentication-provider>
-
     </authentication-manager>
     <beans:bean id="encoder" class="utils.MyPasswordEncoder"/>
-
+<!--<context:component-scan base-package="configs"/>-->
 
 </beans:beans>

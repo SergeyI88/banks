@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="serviceAuth" class="services.ServiceAuthImpl"/>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="service" ref="serviceAuth"/>
+        <property name="serviceName" value="auth"/>
+        <property name="serviceInterface" value="services.ServiceAuth"/>
+        <property name="registryPort" value="1198"/>
+    </bean>
+
+    <bean id="serviceCreateRequest" class="services.ServiceCreateRequestImpl"/>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="service" ref="serviceCreateRequest"/>
+        <!--это урл внизу-->
+        <property name="serviceName" value="createRequest"/>
+        <property name="serviceInterface" value="services.ServiceCreateRequest"/>
+        <property name="registryPort" value="1198"/>
+    </bean>
+
+    <bean id="serviceForApprovedRequestAndCreateContract" class="services.ServiceForApprovedRequestAndCreateContractImpl"/>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="service" ref="serviceForApprovedRequestAndCreateContract"/>
+        <!--это урл внизу-->
+        <property name="serviceName" value="approve"/>
+        <property name="serviceInterface" value="services.ServiceForApprovedRequestAndCreateContract"/>
+        <property name="registryPort" value="1198"/>
+    </bean>
+
+    <bean id="serviceForGetAllRequestAndContractsByIdUser" class="services.ServiceForGetAllRequestAndContractsByIdUserImpl"/>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="service" ref="serviceForGetAllRequestAndContractsByIdUser"/>
+        <!--это урл внизу-->
+        <property name="serviceName" value="get"/>
+        <property name="serviceInterface" value="services.ServiceForGetAllRequestAndContractsByIdUser"/>
+        <property name="registryPort" value="1198"/>
+    </bean>
+
+    <bean id="serviceReg" class="services.ServiceRegImpl"/>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="service" ref="serviceReg"/>
+        <!--это урл внизу-->
+        <property name="serviceName" value="reg"/>
+        <property name="serviceInterface" value="services.ServiceReg"/>
+        <property name="registryPort" value="1198"/>
+    </bean>
+
+</beans>

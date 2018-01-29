@@ -5,14 +5,14 @@ import db.connections.ConnectionManager;
 import db.connections.ConnectionManagerPostgres;
 import db.pojo.*;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
-import java.util.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class LoanContractDaoImpl implements LoanContractDao {
     private static ConnectionManager connectionManager = ConnectionManagerPostgres.getInstance();
